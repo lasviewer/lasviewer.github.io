@@ -1,0 +1,78 @@
+
+
+.canvasParentDiv{
+  width:300px;
+  height:300px;
+  display:block;
+}
+
+.canvasDiv{
+  width:256px;
+  height:256px;
+  display:flex;
+}
+
+/* thebutton */
+.thebutton {
+    border: none;
+    background-color: #333;
+}
+
+.thebutton:hover {
+    background-color:#444;
+}
+
+.horgrp
+{
+  display:flex;
+  height:45px;
+  background-color: rgb(43, 224, 107);
+}
+
+.horgrp button
+{
+  border: none;
+  background: #333;
+}
+
+.thetext{
+  color: white;
+  background-color: #333;
+  font-size: 16px;
+  padding-left: 20px;
+}
+
+.thetext1{
+  color: white;
+  background-color: #333;
+  font-size: 14px;
+  padding-left: 15px;
+}
+
+.thespin{
+  width:40px;
+ }
+
+ .theradio{
+  width:20px;
+  color: white;
+  margin-right:5px;
+  padding-left: 5px;
+  padding-top: 25px;
+  height: 15px;
+ }
+
+ .thelabel{
+  color: white;
+  padding:10px;
+ }
+
+ #canvas {
+  position: absolute; /* absolute */
+  top: auto;
+  left: 10;
+  width: 100vw;    /* 100% */
+  height: 100vh;   /* 100% */
+}
+
+
