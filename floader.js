@@ -1,9 +1,21 @@
 
+function GetSceneClearCB(){
+    return Module.cwrap('ClearSceneJS', 'number', ['number']);
+}
+
+function GetLoadFileCB(){
+    return  Module.cwrap('LdLasCppJS', 'number', ['arrayPointer', 'number', 'number','number']);
+}
+
+function GetPostProcCB(){
+    return  Module.cwrap('PostProcessDataJS', 'number', ['number', 'number']);
+}
+
 function OnLoadFile(input,fType) {
   var fileNdx_ = 0;
   var numFiles_ = input.files.length;
   document.getElementById('GFG').innerHTML = 'Reading ... ' + numFiles_;
-  console.log("OnLoadLas");
+  //console.log("OnLoadLas");
   var file = input.files[fileNdx_];
   if (!file) {
       console.log("NO FILE");
@@ -78,3 +90,57 @@ function OnFileSelected(input,fType) {
   clear_scene_cb(0);
   OnLoadFile(input,fType);
 } //OnFileSelected
+
+function ReadBin(data, fType){
+    console.log("ReadBin");
+    var s_action_chunk = Module._malloc(128);
+    clear_scene_cb = GetSceneClearCB();
+    load_file_cb =  GetLoadFileCB();
+    post_proc_file_cb = GetPostProcCB();
+    clear_scene_cb(0);
+    var totSz = data.byteLength;
+    var first = 0;
+    var chunkSz = load_file_cb(s_action_chunk, 0, fType, totSz); 
+    if(chunkSz  === 0){
+        return;
+    }
+    for(;;){
+        const dpart = data.slice(first, first + chunkSz-1 );  
+        first = first + chunkSz;
+        var res_ptr = Module._malloc(chunkSz);
+        Module.HEAPU8.set(dpart, res_ptr);  
+        chunkSz = load_file_cb(res_ptr, 1, fType, totSz); 
+        Module._free(res_ptr);
+        if(chunkSz  === 0){
+            break;
+        }
+    }
+}
+
+function loadFile(filePath) {
+    eload_cd = Module.cwrap('OnLoadEmbedJS', 'number', ['number']);
+    eload_cd(0);
+    return;
+    /*
+    const req = new XMLHttpRequest();
+    req.open("GET", 'http://cors.io/?https://gist.github.com/polinomov/93853af386df494673624d3f453dd642#file-sample-las', true);
+    //req.open("GET", filePath, true);
+    req.responseType = "arraybuffer";
+    req.onload = (event) => {
+        const arrayBuffer = req.response;
+        if (arrayBuffer) {
+            const byteArray = new Uint8Array(arrayBuffer); 
+            ReadBin(byteArray, 0);
+        }
+        if(req.readyState==4){
+            post_proc_file_cb = GetPostProcCB();
+            post_proc_file_cb(0,0);
+        }
+    };
+    req.onprogress = () =>{
+       console.log("LOADING", req.readyState);
+    };
+
+    req.send(null);
+    */
+}

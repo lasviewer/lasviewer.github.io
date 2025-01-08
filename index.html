@@ -12,7 +12,9 @@
     body {
       overflow: hidden;
       border-left-style: none;
-      background-color:#333;
+      background-color: transparent;
+      margin: 0;
+      padding: 0;
     }
  
     .slidecontainer {
@@ -116,10 +118,17 @@
             class="thebutton">Load XYZ (ascii)
         </button>
         <button type="button" 
+            id="SampleLasId"  
+            onclick="OnUIEvent1(this)"
+            class="thebutton">Try Sample...
+        </button>
+        <!--
+        <button type="button" 
             id="SampleId"  
             onclick="OnUIEvent1(this)"
             class="thebutton">Test
         </button>
+        -->
         <button type="button" 
             id="HelpId"    
             onclick="OpenHelp()" 
@@ -130,8 +139,10 @@
       <button class="dropbtn" id="camBtn" onclick="myFunction('camBtn','cameraDropdown')">Camera</button>
       <div class="dropdown-content" id="cameraDropdown">
         <button class="thebutton" id="camReset" onclick="OnUIEvent1(this)">Reset </button>
+        <!--
         <small  class="thetext1"  id="camOr"    onclick="OnUIEvent1(this)">Orthographic</small>
         <input type="checkbox"    id="camOrto"  onclick="OnUIEvent1(this)" title="Orthographic" id="camOrto" />
+        -->
       </div>
        <!-- colors -->
       <button class="dropbtn" id="ColorsId" onclick="myFunction('ColorsId','viewDropdown')">View</button>
@@ -157,7 +168,7 @@
         <div style="color:0x333; height:5px; width:200px" ></div>
       </div> 
       <small class="thetext">Fov:</small>
-      <input class="thespin" id="fovVal" onclick="OnUIEvent1(this)" type="number" min="1" max="80" value="20"/> 
+      <input class="thespin" id="fovVal" onclick="OnUIEvent1(this)" type="number" min="1" max="80" value="21"/> 
 
       <small class="thetext" title="Point size">  Size:</small>
       <input class="thespin" id="ptSize" type="number" onclick="OnUIEvent1(this)" min="1" max="7" value="3"/> 
@@ -171,7 +182,7 @@
       <small class="thetext">Ruler:</small>
       <input type="checkbox"  title="Ruler" id="ruler"  onchange="OnUIEvent1(this)"/>
 
-      <input type="color" title="Background Color" id="bkcolor" value="#0080FF">
+      <input type="color" title="Background Color" id="bkcolor" value="#0040FF">
       <small id="GFG" class="thetext"> </small>
 
        </div> 
