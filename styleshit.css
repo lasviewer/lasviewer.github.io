@@ -1,4 +1,94 @@
+.canvdiv {
+  height: 100px;
+  width: 100px;
+}
+body {
+  overflow: hidden;
+  border-left-style: none;
+  background-color: transparent;
+  margin: 0;
+  padding: 0;
+}
 
+.slidecontainer {
+  width: 100%; 
+}
+
+.thebutton1 {
+  border: none;
+  background-color: #333;
+}
+
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+}
+
+.dropdown {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdown .dropbtn {
+  cursor: pointer;
+  font-size: 16px;  
+   border: none;
+   outline: none;
+   color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.dropbtn:hover {
+  background-color: #444; 
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #333;
+  min-width: 16px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content button {
+  float: none;
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.show {
+   display: block;
+}        
 
 .canvasParentDiv{
   width:300px;
